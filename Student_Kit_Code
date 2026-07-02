@@ -18,8 +18,8 @@ void loop() {
 
   int adc = readADC();
 
-  // Convert to resistance (0–5000 ohm)
-  int resistance = map(adc, 0, 4095, 0, 5000);
+  // Convert to resistance (0–10000 ohm)
+  int resistance = map(adc, 0, 4095, 0, 10000);
 
   Serial.println(resistance);   // 👉 ONLY THIS
 
