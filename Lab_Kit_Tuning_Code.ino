@@ -1,5 +1,5 @@
 #include <Stepper.h>
-Hi!!!
+
 #define STEPS_PER_REV 2048
 
 Stepper motor1(STEPS_PER_REV, 13,14,12,27);
