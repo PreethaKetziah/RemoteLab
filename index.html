@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Remote Laboratory Dashboard</title>
-
   <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,41 +13,25 @@
       font-family: "Segoe UI", Arial, sans-serif;
     }
 
- body {
-  background:
-    linear-gradient(
-      rgba(255, 255, 255, 0.65),
-      rgba(245, 247, 255, 0.68)
-    ),
-    url("IC_Electronics_Background.png") center / cover fixed no-repeat;
-
-  min-height: 100vh;
-  padding: 24px;
-  color: #1d2634;
-}
+    body {
+      background: linear-gradient(135deg, #ffeef7c4, #fdf9f2, #ecfaff);
+      min-height: 100vh;
+      padding: 24px;
+      color: #1e293b;
+    }
 
     .container {
       max-width: 1250px;
       margin: auto;
     }
 
-    /* ================= HEADER ================= */
-
     .header {
-      background: linear-gradient(
-        135deg,
-        #4f46e5,
-        #7c3aed,
-        #ec4899
-      );
-
+      background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
       color: white;
       padding: 28px;
       border-radius: 24px;
       margin-bottom: 24px;
-
-      box-shadow:
-        0 10px 30px rgba(79, 70, 229, 0.25);
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.25);
     }
 
     .header h1 {
@@ -64,18 +44,12 @@
       opacity: 0.95;
     }
 
-    /* ================= CARDS ================= */
-
     .card {
       background: rgba(255, 255, 255, 0.92);
       border-radius: 24px;
       padding: 24px;
-
-      box-shadow:
-        0 10px 30px rgba(15, 23, 42, 0.08);
-
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
       backdrop-filter: blur(10px);
-
       margin-bottom: 22px;
     }
 
@@ -86,82 +60,18 @@
       margin-bottom: 22px;
     }
 
-    /* ================= SECTION HEADINGS ================= */
-
     .section-title {
-      font-size: 20px;
+      font-size: 24px;
       margin-bottom: 18px;
-
-      padding: 11px 16px;
-
-      border-radius: 12px;
-
       color: #334155;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.04em;
-
-      font-weight: 750;
-
-      background: #eef2ff;
-
-      border: 1px solid rgba(148, 163, 184, 0.14);
     }
-
-    /* Learn Module */
-
-    .card:nth-of-type(1) .section-title {
-      background: #f1edff;
-      color: #6546b8;
-    }
-
-    /* Student Kit */
-
-    .grid-2 > .card:nth-child(1) .section-title {
-      background: #e8f7f0;
-      color: #16704f;
-    }
-
-    /* Lab Kit */
-
-    .grid-2 > .card:nth-child(2) .section-title {
-      background: #eeeaff;
-      color: #6046b7;
-    }
-
-    /* Live Camera */
-
-    .grid-2:nth-of-type(2) > .card:nth-child(1) .section-title {
-      background: #eaf2ff;
-      color: #3267b8;
-    }
-
-    /* Test Simulation */
-
-    .grid-2:nth-of-type(2) > .card:nth-child(2) .section-title {
-      background: #fdebf4;
-      color: #c13c78;
-    }
-
-    /* ================= VALUE BOX ================= */
 
     .value-box {
-      background:
-        linear-gradient(
-          135deg,
-          #eff6ff,
-          #f5f3ff
-        );
-
+      background: linear-gradient(135deg, #eff6ff, #f5f3ff);
       border: 2px solid #dbeafe;
-
       border-radius: 20px;
-
       padding: 24px;
-
       text-align: center;
-
       margin-top: 12px;
     }
 
@@ -177,59 +87,33 @@
       color: #1d4ed8;
     }
 
-    /* ================= STATE BOX ================= */
-
     .state-box {
-      background:
-        linear-gradient(
-          135deg,
-          #ecfeff,
-          #f0fdf4
-        );
-
+      background: linear-gradient(135deg, #ecfeff, #f0fdf4);
       border: 2px solid #bbf7d0;
-
       border-radius: 18px;
-
       padding: 18px;
-
       margin-top: 14px;
-
       font-size: 18px;
-
       font-weight: 600;
-
       color: #065f46;
-
       text-align: center;
     }
-
-    /* ================= BUTTONS ================= */
 
     .button-row {
       display: flex;
       flex-wrap: wrap;
-
       gap: 12px;
-
       margin-top: 16px;
-
       justify-content: center;
     }
 
     button {
       border: none;
-
       border-radius: 18px;
-
       padding: 12px 22px;
-
       font-size: 15px;
-
       font-weight: 600;
-
       cursor: pointer;
-
       transition: 0.2s ease;
     }
 
@@ -238,66 +122,25 @@
       opacity: 0.95;
     }
 
-    .btn-blue {
-      background: #2563eb;
-      color: white;
-    }
-
-    .btn-red {
-      background: #dc2626;
-      color: white;
-    }
-
-    .btn-green {
-      background: #16a34a;
-      color: white;
-    }
-
-    .btn-orange {
-      background: #ea580c;
-      color: white;
-    }
-
-    .btn-purple {
-      background: #7c3aed;
-      color: white;
-    }
-
-    .btn-pink {
-      background: #db2777;
-      color: white;
-    }
-
-    /* ================= CAMERA ================= */
+    .btn-blue { background: #2563eb; color: white; }
+    .btn-red { background: #dc2626; color: white; }
+    .btn-green { background: #16a34a; color: white; }
+    .btn-orange { background: #ea580c; color: white; }
+    .btn-purple { background: #7c3aed; color: white; }
+    .btn-pink { background: #db2777; color: white; }
 
     .camera-box {
       width: 100%;
-
       height: 320px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #e2e8f0,
-          #cbd5e1
-        );
-
+      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
       border-radius: 20px;
-
       overflow: hidden;
-
       display: flex;
-
       justify-content: center;
-
       align-items: center;
-
       color: #475569;
-
       font-size: 18px;
-
       font-weight: 600;
-
       margin-top: 12px;
     }
 
@@ -307,61 +150,37 @@
       object-fit: cover;
     }
 
-    /* ================= INFO ================= */
-
     .info {
       margin-top: 14px;
-
       padding: 14px 18px;
-
       border-radius: 14px;
-
       background: #f8fafc;
-
       color: #475569;
-
       font-size: 15px;
     }
 
-    /* ================= LEARN MODULE ================= */
-
     .learn-box {
       line-height: 1.8;
-
       color: #334155;
-
       margin-top: 12px;
     }
 
     .formula {
       background: #f8fafc;
-
       border-left: 5px solid #7c3aed;
-
       padding: 14px 16px;
-
       border-radius: 12px;
-
       margin: 12px 0;
-
       font-weight: 600;
-
       color: #4c1d95;
     }
 
-    /* ================= INPUT ================= */
-
     input[type="number"] {
       padding: 12px 14px;
-
       border-radius: 12px;
-
       border: 1px solid #cbd5e1;
-
       font-size: 15px;
-
       width: 220px;
-
       margin-top: 10px;
     }
 
@@ -369,10 +188,7 @@
       display: none;
     }
 
-    /* ================= RESPONSIVE ================= */
-
     @media (max-width: 900px) {
-
       .grid-2 {
         grid-template-columns: 1fr;
       }
@@ -385,1148 +201,386 @@
         font-size: 30px;
       }
     }
-
   </style>
 </head>
-
 <body>
-
   <div class="container">
 
-    <!-- ================= HEADER ================= -->
-
     <div class="header">
-
-      <h1>
-        Remote Laboratory Dashboard
-      </h1>
-
-      <p>
-        Student Kit Monitoring, Lab Kit Control,
-        Learning Module, and Simulation Interface
-      </p>
-
+      <h1>Remote Laboratory Dashboard</h1>
+      <p>Student Kit Monitoring, Lab Kit Control, Learning Module, and Simulation Interface</p>
     </div>
-
-
-    <!-- ================= LEARN MODULE ================= -->
 
     <div class="card">
-
-      <h2 class="section-title">
-        Learn Module
-      </h2>
-
+      <h2 class="section-title">Learn Module</h2>
       <div class="button-row">
-
-        <button
-          class="btn-purple"
-          id="toggleLearnBtn">
-
-          Show / Hide Learn Content
-
-        </button>
-
+        <button class="btn-purple" id="toggleLearnBtn">Show / Hide Learn Content</button>
       </div>
 
-
-      <div
-        id="learnSection"
-        class="learn-box hidden">
-
-        <h3>
-          Astable Multivibrator
-        </h3>
-
+      <div id="learnSection" class="learn-box hidden">
+        <h3>Astable Multivibrator</h3>
         <p>
-
-          An astable multivibrator is a free-running
-          oscillator that continuously switches between
-          HIGH and LOW states and generates a square
-          wave output.
-
+          An astable multivibrator is a free-running oscillator that continuously switches between HIGH and LOW states
+          and generates a square wave output.
         </p>
 
+        <div class="formula">Resistance Formula: R = (ADC / 4095) × 5000</div>
+        <div class="formula">Stepper Mapping: steps = map(R, 0, 5000, 0, 2048)</div>
+        <div class="formula">Astable Formula: T = 1.386 RC</div>
+        <div class="formula">Frequency: f = 1 / T</div>
 
-        <div class="formula">
+        <h3>Circuit Diagram</h3>
+        <p>Add your astable multivibrator circuit diagram and remote lab block diagram here.</p>
 
-          Resistance Formula:
-          R = (ADC / 4095) × 5000
-
-        </div>
-
-
-        <div class="formula">
-
-          Stepper Mapping:
-          steps = map(R, 0, 5000, 0, 2048)
-
-        </div>
-
-
-        <div class="formula">
-
-          Astable Formula:
-          T = 1.386 RC
-
-        </div>
-
-
-        <div class="formula">
-
-          Frequency:
-          f = 1 / T
-
-        </div>
-
-
-        <h3>
-          Circuit Diagram
-        </h3>
-
-        <p>
-
-          Add your astable multivibrator circuit
-          diagram and remote lab block diagram here.
-
-        </p>
-
-
-        <h3>
-          Learning Flow
-        </h3>
-
-        <ul
-          style="margin-left:20px; margin-top:10px;">
-
-          <li>
-            Study the circuit and formulas
-          </li>
-
-          <li>
-            Understand resistance measurement
-            and tuning logic
-          </li>
-
-          <li>
-            Run a sample simulation
-          </li>
-
-          <li>
-            Observe the output and camera feed
-          </li>
-
+        <h3>Learning Flow</h3>
+        <ul style="margin-left:20px; margin-top:10px;">
+          <li>Study the circuit and formulas</li>
+          <li>Understand resistance measurement and tuning logic</li>
+          <li>Run a sample simulation</li>
+          <li>Observe the output and camera feed</li>
         </ul>
-
       </div>
-
     </div>
-
-
-    <!-- ================= STUDENT + LAB KIT ================= -->
 
     <div class="grid-2">
 
-
-      <!-- STUDENT KIT -->
-
       <div class="card">
-
-        <h2 class="section-title">
-          Student Kit
-        </h2>
-
+        <h2 class="section-title">Student Kit</h2>
 
         <div class="value-box">
-
-          <div class="label">
-
-            Live Potentiometer Resistance
-
-          </div>
-
-          <div
-            class="value"
-            id="studentValue">
-
-            -- Ω
-
-          </div>
-
+          <div class="label">Live Potentiometer Resistance</div>
+          <div class="value" id="studentValue">-- Ω</div>
         </div>
-
 
         <div class="button-row">
-
-          <button
-            class="btn-blue"
-            id="connectStudentBtn">
-
-            Connect
-
-          </button>
-
-
-          <button
-            class="btn-red"
-            id="disconnectStudentBtn">
-
-            Disconnect
-
-          </button>
-
+          <button class="btn-blue" id="connectStudentBtn">Connect</button>
+          <button class="btn-red" id="disconnectStudentBtn">Disconnect</button>
         </div>
 
-
-        <div
-          class="button-row"
-          style="margin-top:10px;">
-
-          <button
-            class="btn-green"
-            id="simulateBtn">
-
-            Start Simulation
-
-          </button>
-
-
-          <button
-            class="btn-orange"
-            id="stopBtn">
-
-            Stop Simulation
-
-          </button>
-
+        <div class="button-row" style="margin-top:10px;">
+          <button class="btn-green" id="simulateBtn">Start Simulation</button>
+          <button class="btn-orange" id="stopBtn">Stop Simulation</button>
         </div>
-
 
         <div class="info">
-
-          Live value before simulation.
-          During simulation, this value freezes
-          until you press Stop Simulation.
-
+          Live value before simulation. During simulation, this value freezes until you press Stop Simulation.
         </div>
-
       </div>
 
-
-      <!-- LAB KIT -->
-
       <div class="card">
+        <h2 class="section-title">Lab Kit</h2>
 
-        <h2 class="section-title">
-          Lab Kit
-        </h2>
-
-
-        <div
-          class="state-box"
-          id="labState">
-
-          State: DISCONNECTED
-
-        </div>
-
+        <div class="state-box" id="labState">State: DISCONNECTED</div>
 
         <div class="button-row">
-
-          <button
-            class="btn-purple"
-            id="connectLabBtn">
-
-            Connect
-
-          </button>
-
-
-          <button
-            class="btn-red"
-            id="disconnectLabBtn">
-
-            Disconnect
-
-          </button>
-
+          <button class="btn-purple" id="connectLabBtn">Connect</button>
+          <button class="btn-red" id="disconnectLabBtn">Disconnect</button>
         </div>
-
 
         <div class="info">
-
-          Lab kit state is shown here.
-          Student Kit value is sent to HiveMQ
-          during simulation.
-
+          Lab kit state is shown here. Student Kit value is sent to HiveMQ during simulation.
         </div>
-
       </div>
 
     </div>
-
-
-    <!-- ================= CAMERA + SIMULATION ================= -->
 
     <div class="grid-2">
 
-
-      <!-- CAMERA -->
-
       <div class="card">
-
-        <h2 class="section-title">
-          Live Camera Feed
-        </h2>
-
-
+        <h2 class="section-title">Live Camera Feed</h2>
         <div class="camera-box">
-
-          <img
-            id="cameraFeed"
-            src=""
-            alt="Camera Feed Not Connected">
-
+          <img id="cameraFeed" src="" alt="Camera Feed Not Connected">
         </div>
-
-
         <div class="info">
-
-          When simulation starts,
-          the lab kit camera feed should be
-          displayed here.
-
+          When simulation starts, the lab kit camera feed should be displayed here.
         </div>
-
       </div>
 
-
-      <!-- SIMULATION -->
-
       <div class="card">
-
-        <h2 class="section-title">
-          Test Simulation
-        </h2>
-
-
-        <p>
-          Enter a sample resistance value
-          or use a quick simulation button.
-        </p>
-
-
-        <input
-          type="number"
-          id="sampleValue"
-          placeholder="Enter value in ohms"
-          min="0"
-          max="5000">
-
-
+        <h2 class="section-title">Test Simulation</h2>
+        <p>Enter a sample resistance value or use a quick simulation button.</p>
+        <input type="number" id="sampleValue" placeholder="Enter value in ohms" min="0" max="5000">
         <div class="button-row">
-
-          <button
-            class="btn-blue"
-            id="runSampleBtn">
-
-            Run Sample Simulation
-
-          </button>
-
-
-          <button
-            class="btn-pink"
-            id="sample1Btn">
-
-            1000 Ω
-
-          </button>
-
-
-          <button
-            class="btn-pink"
-            id="sample2Btn">
-
-            2500 Ω
-
-          </button>
-
-
-          <button
-            class="btn-pink"
-            id="sample3Btn">
-
-            4000 Ω
-
-          </button>
-
+          <button class="btn-blue" id="runSampleBtn">Run Sample Simulation</button>
+          <button class="btn-pink" id="sample1Btn">1000 Ω</button>
+          <button class="btn-pink" id="sample2Btn">2500 Ω</button>
+          <button class="btn-pink" id="sample3Btn">4000 Ω</button>
         </div>
-
       </div>
 
     </div>
 
-
-    <!-- ================= SYSTEM STATUS ================= -->
-
     <div class="card">
-
-      <div
-        class="info"
-        id="info">
-
-        System ready.
-        Connect Student Kit and Lab Kit to begin.
-
-      </div>
-
+      <div class="info" id="info">System ready. Connect Student Kit and Lab Kit to begin.</div>
     </div>
 
   </div>
 
-
-  <!-- ================= JAVASCRIPT ================= -->
-
   <script>
+    const studentValueEl = document.getElementById("studentValue");
+    const labStateEl = document.getElementById("labState");
+    const infoEl = document.getElementById("info");
+    const cameraFeed = document.getElementById("cameraFeed");
 
-    const studentValueEl =
-      document.getElementById("studentValue");
+    const connectStudentBtn = document.getElementById("connectStudentBtn");
+    const disconnectStudentBtn = document.getElementById("disconnectStudentBtn");
+    const connectLabBtn = document.getElementById("connectLabBtn");
+    const disconnectLabBtn = document.getElementById("disconnectLabBtn");
+    const simulateBtn = document.getElementById("simulateBtn");
+    const stopBtn = document.getElementById("stopBtn");
 
-    const labStateEl =
-      document.getElementById("labState");
+    const runSampleBtn = document.getElementById("runSampleBtn");
+    const sample1Btn = document.getElementById("sample1Btn");
+    const sample2Btn = document.getElementById("sample2Btn");
+    const sample3Btn = document.getElementById("sample3Btn");
+    const sampleValueInput = document.getElementById("sampleValue");
 
-    const infoEl =
-      document.getElementById("info");
-
-    const cameraFeed =
-      document.getElementById("cameraFeed");
-
-
-    const connectStudentBtn =
-      document.getElementById("connectStudentBtn");
-
-    const disconnectStudentBtn =
-      document.getElementById("disconnectStudentBtn");
-
-    const connectLabBtn =
-      document.getElementById("connectLabBtn");
-
-    const disconnectLabBtn =
-      document.getElementById("disconnectLabBtn");
-
-    const simulateBtn =
-      document.getElementById("simulateBtn");
-
-    const stopBtn =
-      document.getElementById("stopBtn");
-
-
-    const runSampleBtn =
-      document.getElementById("runSampleBtn");
-
-    const sample1Btn =
-      document.getElementById("sample1Btn");
-
-    const sample2Btn =
-      document.getElementById("sample2Btn");
-
-    const sample3Btn =
-      document.getElementById("sample3Btn");
-
-    const sampleValueInput =
-      document.getElementById("sampleValue");
-
-
-    const toggleLearnBtn =
-      document.getElementById("toggleLearnBtn");
-
-    const learnSection =
-      document.getElementById("learnSection");
-
+    const toggleLearnBtn = document.getElementById("toggleLearnBtn");
+    const learnSection = document.getElementById("learnSection");
 
     let serialPort = null;
-
     let serialReader = null;
-
     let mqttClient = null;
 
-
     let simulationActive = false;
-
     let currentStudentValue = null;
-
     let studentConnected = false;
 
-
     let labOnline = false;
-
     let heartbeatTimer = null;
 
-
-    /* ================= LAB STATE ================= */
-
-    function setLabState(
-      text,
-      bg = "#e5e7eb",
-      color = "#374151"
-    ) {
-
+    function setLabState(text, bg = "#e5e7eb", color = "#374151") {
       labStateEl.textContent = text;
-
       labStateEl.style.background = bg;
-
       labStateEl.style.color = color;
-
     }
-
 
     function startHeartbeatTimeout() {
-
-      if (heartbeatTimer)
-        clearTimeout(heartbeatTimer);
-
-
+      if (heartbeatTimer) clearTimeout(heartbeatTimer);
       heartbeatTimer = setTimeout(() => {
-
         labOnline = false;
-
-        setLabState(
-          "State: NO KIT CONNECTED",
-          "#e5e7eb",
-          "#374151"
-        );
-
+        setLabState("State: NO KIT CONNECTED", "#e5e7eb", "#374151");
       }, 4000);
-
     }
 
-
-    /* ================= STUDENT KIT ================= */
-
-    connectStudentBtn.addEventListener(
-      "click",
-      async () => {
-
-        try {
-
-          if (!("serial" in navigator)) {
-
-            alert("Use Chrome or Edge");
-
-            return;
-
-          }
-
-
-          serialPort =
-            await navigator.serial.requestPort();
-
-
-          await serialPort.open({
-            baudRate: 115200
-          });
-
-
-          const decoder =
-            new TextDecoderStream();
-
-
-          serialPort.readable.pipeTo(
-            decoder.writable
-          );
-
-
-          serialReader =
-            decoder.readable.getReader();
-
-
-          studentConnected = true;
-
-
-          infoEl.textContent =
-            "Student kit connected successfully.";
-
-
-          let buffer = "";
-
-
-          while (true) {
-
-            const {
-              value,
-              done
-            } = await serialReader.read();
-
-
-            if (done)
-              break;
-
-
-            buffer += value;
-
-
-            let lines =
-              buffer.split("\n");
-
-
-            buffer = lines.pop();
-
-
-            for (let line of lines) {
-
-              line = line.trim();
-
-
-              if (
-                line &&
-                !isNaN(line)
-              ) {
-
-                currentStudentValue =
-                  parseFloat(line);
-
-
-                if (!simulationActive) {
-
-                  studentValueEl.textContent =
-                    currentStudentValue.toFixed(2)
-                    + " Ω";
-
-                }
-
-              }
-
-            }
-
-          }
-
-        }
-
-        catch (err) {
-
-          alert(
-            "Student kit connection failed: "
-            + err.message
-          );
-
-        }
-
-      }
-    );
-
-
-    /* ================= STUDENT DISCONNECT ================= */
-
-    disconnectStudentBtn.addEventListener(
-      "click",
-      async () => {
-
-        try {
-
-          studentConnected = false;
-
-
-          if (serialReader) {
-
-            await serialReader.cancel();
-
-            serialReader = null;
-
-          }
-
-
-          if (serialPort) {
-
-            await serialPort.close();
-
-            serialPort = null;
-
-          }
-
-
-          infoEl.textContent =
-            "Student kit disconnected.";
-
-        }
-
-        catch (err) {
-
-          alert(
-            "Disconnect failed: "
-            + err.message
-          );
-
-        }
-
-      }
-    );
-
-
-    /* ================= LAB KIT ================= */
-
-    connectLabBtn.addEventListener(
-      "click",
-      () => {
-
-        if (
-          mqttClient &&
-          mqttClient.connected
-        )
+    connectStudentBtn.addEventListener("click", async () => {
+      try {
+        if (!("serial" in navigator)) {
+          alert("Use Chrome or Edge");
           return;
-
-
-        setLabState(
-          "State: WAITING FOR LAB KIT",
-          "#fde68a",
-          "#92400e"
-        );
-
-
-        infoEl.textContent =
-          "Connected to broker. Waiting for real lab kit...";
-
-
-        mqttClient = mqtt.connect(
-
-          "wss://1dfb1112841b4e9aa8f1781b0fd753d3.s1.eu.hivemq.cloud:8884/mqtt",
-
-          {
-            username: "RemoteLab",
-            password: "Remote@Lab1"
-          }
-
-        );
-
-
-        mqttClient.on(
-          "connect",
-          () => {
-
-            mqttClient.subscribe(
-              "remoteLab/status/labState"
-            );
-
-            startHeartbeatTimeout();
-
-          }
-        );
-
-
-        mqttClient.on(
-          "message",
-          (
-            topic,
-            message,
-            packet
-          ) => {
-
-            const msg =
-              message.toString();
-
-
-            if (
-              packet &&
-              packet.retain
-            )
-              return;
-
-
-            if (
-              topic ===
-              "remoteLab/status/labState"
-            ) {
-
-              labOnline = true;
-
-              startHeartbeatTimeout();
-
-
-              setLabState(
-                "State: " + msg,
-                "#bbf7d0",
-                "#065f46"
-              );
-
-            }
-
-          }
-        );
-
-
-        mqttClient.on(
-          "error",
-          () => {
-
-            setLabState(
-              "State: ERROR",
-              "#fecaca",
-              "#991b1b"
-            );
-
-          }
-        );
-
-
-        mqttClient.on(
-          "close",
-          () => {
-
-            if (heartbeatTimer)
-              clearTimeout(heartbeatTimer);
-
-
-            labOnline = false;
-
-
-            setLabState(
-              "State: DISCONNECTED",
-              "#e5e7eb",
-              "#374151"
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-    /* ================= LAB DISCONNECT ================= */
-
-    disconnectLabBtn.addEventListener(
-      "click",
-      () => {
-
-        if (heartbeatTimer)
-          clearTimeout(heartbeatTimer);
-
-
-        if (mqttClient) {
-
-          mqttClient.end();
-
-          mqttClient = null;
-
         }
 
+        serialPort = await navigator.serial.requestPort();
+        await serialPort.open({ baudRate: 115200 });
 
-        labOnline = false;
+        const decoder = new TextDecoderStream();
+        serialPort.readable.pipeTo(decoder.writable);
+        serialReader = decoder.readable.getReader();
 
+        studentConnected = true;
+        infoEl.textContent = "Student kit connected successfully.";
 
-        setLabState(
-          "State: DISCONNECTED",
-          "#e5e7eb",
-          "#374151"
-        );
+        let buffer = "";
+        while (true) {
+          const { value, done } = await serialReader.read();
+          if (done) break;
 
+          buffer += value;
+          let lines = buffer.split("\n");
+          buffer = lines.pop();
 
-        infoEl.textContent =
-          "Lab kit disconnected.";
+          for (let line of lines) {
+            line = line.trim();
 
+            if (line && !isNaN(line)) {
+              currentStudentValue = parseFloat(line);
+
+              if (!simulationActive) {
+                studentValueEl.textContent = currentStudentValue.toFixed(2) + " Ω";
+              }
+            }
+          }
+        }
+      } catch (err) {
+        alert("Student kit connection failed: " + err.message);
       }
-    );
+    });
 
+    disconnectStudentBtn.addEventListener("click", async () => {
+      try {
+        studentConnected = false;
 
-    /* ================= SEND VALUE ================= */
+        if (serialReader) {
+          await serialReader.cancel();
+          serialReader = null;
+        }
+
+        if (serialPort) {
+          await serialPort.close();
+          serialPort = null;
+        }
+
+        infoEl.textContent = "Student kit disconnected.";
+      } catch (err) {
+        alert("Disconnect failed: " + err.message);
+      }
+    });
+
+    connectLabBtn.addEventListener("click", () => {
+      if (mqttClient && mqttClient.connected) return;
+
+      setLabState("State: WAITING FOR LAB KIT", "#fde68a", "#92400e");
+      infoEl.textContent = "Connected to broker. Waiting for real lab kit...";
+
+      mqttClient = mqtt.connect(
+        "wss://1dfb1112841b4e9aa8f1781b0fd753d3.s1.eu.hivemq.cloud:8884/mqtt",
+        {
+          username: "RemoteLab",
+          password: "Remote@Lab1"
+        }
+      );
+
+      mqttClient.on("connect", () => {
+        mqttClient.subscribe("remoteLab/status/labState");
+        startHeartbeatTimeout();
+      });
+
+      mqttClient.on("message", (topic, message, packet) => {
+        const msg = message.toString();
+
+        if (packet && packet.retain) return;
+
+        if (topic === "remoteLab/status/labState") {
+          labOnline = true;
+          startHeartbeatTimeout();
+          setLabState("State: " + msg, "#bbf7d0", "#065f46");
+        }
+      });
+
+      mqttClient.on("error", () => {
+        setLabState("State: ERROR", "#fecaca", "#991b1b");
+      });
+
+      mqttClient.on("close", () => {
+        if (heartbeatTimer) clearTimeout(heartbeatTimer);
+        labOnline = false;
+        setLabState("State: DISCONNECTED", "#e5e7eb", "#374151");
+      });
+    });
+
+    disconnectLabBtn.addEventListener("click", () => {
+      if (heartbeatTimer) clearTimeout(heartbeatTimer);
+
+      if (mqttClient) {
+        mqttClient.end();
+        mqttClient = null;
+      }
+
+      labOnline = false;
+      setLabState("State: DISCONNECTED", "#e5e7eb", "#374151");
+      infoEl.textContent = "Lab kit disconnected.";
+    });
 
     function sendStudentValueToHive(value) {
-
-      if (
-        !mqttClient ||
-        !mqttClient.connected
-      ) {
-
-        alert(
-          "Connect Lab Kit first"
-        );
-
+      if (!mqttClient || !mqttClient.connected) {
+        alert("Connect Lab Kit first");
         return false;
-
       }
-
 
       if (!labOnline) {
-
-        alert(
-          "No real lab kit connected"
-        );
-
+        alert("No real lab kit connected");
         return false;
-
       }
 
-
-      mqttClient.publish(
-        "remoteLab/cmd/value",
-        String(value.toFixed(2))
-      );
-
-
-      mqttClient.publish(
-        "remoteLab/cmd/simulate",
-        "1"
-      );
-
-
+      mqttClient.publish("remoteLab/cmd/value", String(value.toFixed(2)));
+      mqttClient.publish("remoteLab/cmd/simulate", "1");
       return true;
-
     }
 
-
-    /* ================= START SIMULATION ================= */
-
-    simulateBtn.addEventListener(
-      "click",
-      () => {
-
-        if (
-          !studentConnected ||
-          currentStudentValue === null
-        ) {
-
-          alert(
-            "Connect Student Kit first"
-          );
-
-          return;
-
-        }
-
-
-        simulationActive = true;
-
-
-        studentValueEl.textContent =
-          currentStudentValue.toFixed(2)
-          + " Ω";
-
-
-        const sent =
-          sendStudentValueToHive(
-            currentStudentValue
-          );
-
-
-        if (sent) {
-
-          infoEl.textContent =
-            "Simulation started. Student Kit value sent to HiveMQ.";
-
-        }
-
-        else {
-
-          simulationActive = false;
-
-        }
-
+    simulateBtn.addEventListener("click", () => {
+      if (!studentConnected || currentStudentValue === null) {
+        alert("Connect Student Kit first");
+        return;
       }
-    );
 
+      simulationActive = true;
+      studentValueEl.textContent = currentStudentValue.toFixed(2) + " Ω";
 
-    /* ================= STOP SIMULATION ================= */
-
-    stopBtn.addEventListener(
-      "click",
-      () => {
-
-        if (
-          mqttClient &&
-          mqttClient.connected
-        ) {
-
-          mqttClient.publish(
-            "remoteLab/cmd/stop",
-            "1"
-          );
-
-        }
-
-
+      const sent = sendStudentValueToHive(currentStudentValue);
+      if (sent) {
+        infoEl.textContent = "Simulation started. Student Kit value sent to HiveMQ.";
+      } else {
         simulationActive = false;
-
-
-        infoEl.textContent =
-          "Simulation stopped. Student value is live again.";
-
       }
-    );
+    });
 
-
-    /* ================= SAMPLE SIMULATION ================= */
-
-    runSampleBtn.addEventListener(
-      "click",
-      () => {
-
-        const v =
-          parseFloat(
-            sampleValueInput.value
-          );
-
-
-        if (isNaN(v)) {
-
-          alert(
-            "Enter a valid value"
-          );
-
-          return;
-
-        }
-
-
-        simulationActive = true;
-
-
-        studentValueEl.textContent =
-          v.toFixed(2) + " Ω";
-
-
-        const sent =
-          sendStudentValueToHive(v);
-
-
-        if (sent) {
-
-          infoEl.textContent =
-            "Sample simulation started. Sample value sent to HiveMQ.";
-
-        }
-
-        else {
-
-          simulationActive = false;
-
-        }
-
+    stopBtn.addEventListener("click", () => {
+      if (mqttClient && mqttClient.connected) {
+        mqttClient.publish("remoteLab/cmd/stop", "1");
       }
-    );
 
+      simulationActive = false;
+      infoEl.textContent = "Simulation stopped. Student value is live again.";
+    });
 
-    /* ================= SAMPLE 1000 ================= */
-
-    sample1Btn.addEventListener(
-      "click",
-      () => {
-
-        simulationActive = true;
-
-
-        studentValueEl.textContent =
-          "1000.00 Ω";
-
-
-        const sent =
-          sendStudentValueToHive(
-            1000
-          );
-
-
-        if (sent) {
-
-          infoEl.textContent =
-            "Sample simulation started. 1000 Ω sent to HiveMQ.";
-
-        }
-
-        else {
-
-          simulationActive = false;
-
-        }
-
+    runSampleBtn.addEventListener("click", () => {
+      const v = parseFloat(sampleValueInput.value);
+      if (isNaN(v)) {
+        alert("Enter a valid value");
+        return;
       }
-    );
 
+      simulationActive = true;
+      studentValueEl.textContent = v.toFixed(2) + " Ω";
 
-    /* ================= SAMPLE 2500 ================= */
-
-    sample2Btn.addEventListener(
-      "click",
-      () => {
-
-        simulationActive = true;
-
-
-        studentValueEl.textContent =
-          "2500.00 Ω";
-
-
-        const sent =
-          sendStudentValueToHive(
-            2500
-          );
-
-
-        if (sent) {
-
-          infoEl.textContent =
-            "Sample simulation started. 2500 Ω sent to HiveMQ.";
-
-        }
-
-        else {
-
-          simulationActive = false;
-
-        }
-
+      const sent = sendStudentValueToHive(v);
+      if (sent) {
+        infoEl.textContent = "Sample simulation started. Sample value sent to HiveMQ.";
+      } else {
+        simulationActive = false;
       }
-    );
+    });
 
+    sample1Btn.addEventListener("click", () => {
+      simulationActive = true;
+      studentValueEl.textContent = "1000.00 Ω";
 
-    /* ================= SAMPLE 4000 ================= */
-
-    sample3Btn.addEventListener(
-      "click",
-      () => {
-
-        simulationActive = true;
-
-
-        studentValueEl.textContent =
-          "4000.00 Ω";
-
-
-        const sent =
-          sendStudentValueToHive(
-            4000
-          );
-
-
-        if (sent) {
-
-          infoEl.textContent =
-            "Sample simulation started. 4000 Ω sent to HiveMQ.";
-
-        }
-
-        else {
-
-          simulationActive = false;
-
-        }
-
+      const sent = sendStudentValueToHive(1000);
+      if (sent) {
+        infoEl.textContent = "Sample simulation started. 1000 Ω sent to HiveMQ.";
+      } else {
+        simulationActive = false;
       }
-    );
+    });
 
+    sample2Btn.addEventListener("click", () => {
+      simulationActive = true;
+      studentValueEl.textContent = "2500.00 Ω";
 
-    /* ================= LEARN MODULE ================= */
-
-    toggleLearnBtn.addEventListener(
-      "click",
-      () => {
-
-        learnSection.classList.toggle(
-          "hidden"
-        );
-
+      const sent = sendStudentValueToHive(2500);
+      if (sent) {
+        infoEl.textContent = "Sample simulation started. 2500 Ω sent to HiveMQ.";
+      } else {
+        simulationActive = false;
       }
-    );
+    });
 
+    sample3Btn.addEventListener("click", () => {
+      simulationActive = true;
+      studentValueEl.textContent = "4000.00 Ω";
+
+      const sent = sendStudentValueToHive(4000);
+      if (sent) {
+        infoEl.textContent = "Sample simulation started. 4000 Ω sent to HiveMQ.";
+      } else {
+        simulationActive = false;
+      }
+    });
+
+    toggleLearnBtn.addEventListener("click", () => {
+      learnSection.classList.toggle("hidden");
+    });
   </script>
-
 </body>
 </html>
+
